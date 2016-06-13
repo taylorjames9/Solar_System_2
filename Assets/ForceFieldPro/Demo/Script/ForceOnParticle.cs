@@ -27,7 +27,7 @@ public class ForceOnParticle : MonoBehaviour
 
     void Update()
     {
-		if (field_01 != null) {
+		if (field_01 != null && field_01.gameObject.activeSelf) {
 				foreach (ParticleEmitter pe in pes) {
 					Transform t = pe.transform;
 					Particle[] particles = pe.particles;
@@ -59,7 +59,7 @@ public class ForceOnParticle : MonoBehaviour
 					ps.SetParticles (particles, num);
 				}
 			}
-		if (field_02 != null) {
+		if (field_02 != null && field_02.gameObject.activeSelf ) {
 			foreach (ParticleEmitter pe in pes) {
 				Transform t = pe.transform;
 				Particle[] particles = pe.particles;
@@ -91,7 +91,7 @@ public class ForceOnParticle : MonoBehaviour
 				ps.SetParticles (particles, num);
 			}
 		}
-		if (field_03 != null) {
+		if (field_03 != null && field_03.gameObject.activeSelf) {
 			foreach (ParticleEmitter pe in pes) {
 				Transform t = pe.transform;
 				Particle[] particles = pe.particles;
