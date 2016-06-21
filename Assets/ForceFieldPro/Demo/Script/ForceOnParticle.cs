@@ -8,9 +8,11 @@ using System.Collections;
 public class ForceOnParticle : MonoBehaviour
 {
     [FFToolTip("The force field that will be used.")]
-    public ForceField field_01;
-	public ForceField field_02;
-	public ForceField field_03;
+    public ForceField smallweight;
+	public ForceField midweight;
+	public ForceField largeweight;
+	public ForceField osc_weight;
+	public ForceField repel_weight;
 
     [FFToolTip("Modifier of the force.")]
     public float factor = 1;
@@ -27,7 +29,7 @@ public class ForceOnParticle : MonoBehaviour
 
     void Update()
     {
-		if (field_01 != null && field_01.gameObject.activeSelf) {
+		if (smallweight != null && smallweight.gameObject.activeSelf) {
 				foreach (ParticleEmitter pe in pes) {
 					Transform t = pe.transform;
 					Particle[] particles = pe.particles;
@@ -35,9 +37,9 @@ public class ForceOnParticle : MonoBehaviour
 					for (int i = 0; i < num; i++) {
 						Vector3 force;
 						if (!pe.useWorldSpace) {
-						force = t.InverseTransformDirection (field_01.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (smallweight.GetForce (t.TransformPoint (particles [i].position)));
 						} else {
-						force = field_01.GetForce (particles [i].position);
+						force = smallweight.GetForce (particles [i].position);
 						}
 						particles [i].velocity += force * factor;
 					}
@@ -50,16 +52,16 @@ public class ForceOnParticle : MonoBehaviour
 					for (int i = 0; i < num; i++) {
 						Vector3 force;
 						if (ps.simulationSpace == ParticleSystemSimulationSpace.Local) {
-						force = t.InverseTransformDirection (field_01.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (smallweight.GetForce (t.TransformPoint (particles [i].position)));
 						} else {
-						force = field_01.GetForce (particles [i].position);
+						force = smallweight.GetForce (particles [i].position);
 						}
 						particles [i].velocity += force * factor;
 					}
 					ps.SetParticles (particles, num);
 				}
 			}
-		if (field_02 != null && field_02.gameObject.activeSelf ) {
+		if (midweight != null && midweight.gameObject.activeSelf ) {
 			foreach (ParticleEmitter pe in pes) {
 				Transform t = pe.transform;
 				Particle[] particles = pe.particles;
@@ -67,9 +69,9 @@ public class ForceOnParticle : MonoBehaviour
 				for (int i = 0; i < num; i++) {
 					Vector3 force;
 					if (!pe.useWorldSpace) {
-						force = t.InverseTransformDirection (field_02.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (midweight.GetForce (t.TransformPoint (particles [i].position)));
 					} else {
-						force = field_02.GetForce (particles [i].position);
+						force = midweight.GetForce (particles [i].position);
 					}
 					particles [i].velocity += force * factor;
 				}
@@ -82,16 +84,16 @@ public class ForceOnParticle : MonoBehaviour
 				for (int i = 0; i < num; i++) {
 					Vector3 force;
 					if (ps.simulationSpace == ParticleSystemSimulationSpace.Local) {
-						force = t.InverseTransformDirection (field_02.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (midweight.GetForce (t.TransformPoint (particles [i].position)));
 					} else {
-						force = field_02.GetForce (particles [i].position);
+						force = midweight.GetForce (particles [i].position);
 					}
 					particles [i].velocity += force * factor;
 				}
 				ps.SetParticles (particles, num);
 			}
 		}
-		if (field_03 != null && field_03.gameObject.activeSelf) {
+		if (largeweight != null && largeweight.gameObject.activeSelf) {
 			foreach (ParticleEmitter pe in pes) {
 				Transform t = pe.transform;
 				Particle[] particles = pe.particles;
@@ -99,9 +101,9 @@ public class ForceOnParticle : MonoBehaviour
 				for (int i = 0; i < num; i++) {
 					Vector3 force;
 					if (!pe.useWorldSpace) {
-						force = t.InverseTransformDirection (field_03.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (largeweight.GetForce (t.TransformPoint (particles [i].position)));
 					} else {
-						force = field_03.GetForce (particles [i].position);
+						force = largeweight.GetForce (particles [i].position);
 					}
 					particles [i].velocity += force * factor;
 				}
@@ -114,9 +116,73 @@ public class ForceOnParticle : MonoBehaviour
 				for (int i = 0; i < num; i++) {
 					Vector3 force;
 					if (ps.simulationSpace == ParticleSystemSimulationSpace.Local) {
-						force = t.InverseTransformDirection (field_03.GetForce (t.TransformPoint (particles [i].position)));
+						force = t.InverseTransformDirection (largeweight.GetForce (t.TransformPoint (particles [i].position)));
 					} else {
-						force = field_03.GetForce (particles [i].position);
+						force = largeweight.GetForce (particles [i].position);
+					}
+					particles [i].velocity += force * factor;
+				}
+				ps.SetParticles (particles, num);
+			}
+		}
+		if (osc_weight != null && osc_weight.gameObject.activeSelf) {
+			foreach (ParticleEmitter pe in pes) {
+				Transform t = pe.transform;
+				Particle[] particles = pe.particles;
+				int num = particles.Length;
+				for (int i = 0; i < num; i++) {
+					Vector3 force;
+					if (!pe.useWorldSpace) {
+						force = t.InverseTransformDirection (osc_weight.GetForce (t.TransformPoint (particles [i].position)));
+					} else {
+						force = osc_weight.GetForce (particles [i].position);
+					}
+					particles [i].velocity += force * factor;
+				}
+				pe.particles = particles;
+			}
+			foreach (ParticleSystem ps in pss) {
+				Transform t = ps.transform;
+				ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.maxParticles];
+				int num = ps.GetParticles (particles);
+				for (int i = 0; i < num; i++) {
+					Vector3 force;
+					if (ps.simulationSpace == ParticleSystemSimulationSpace.Local) {
+						force = t.InverseTransformDirection (osc_weight.GetForce (t.TransformPoint (particles [i].position)));
+					} else {
+						force = osc_weight.GetForce (particles [i].position);
+					}
+					particles [i].velocity += force * factor;
+				}
+				ps.SetParticles (particles, num);
+			}
+		}
+		if (repel_weight != null && repel_weight.gameObject.activeSelf) {
+			foreach (ParticleEmitter pe in pes) {
+				Transform t = pe.transform;
+				Particle[] particles = pe.particles;
+				int num = particles.Length;
+				for (int i = 0; i < num; i++) {
+					Vector3 force;
+					if (!pe.useWorldSpace) {
+						force = t.InverseTransformDirection (repel_weight.GetForce (t.TransformPoint (particles [i].position)));
+					} else {
+						force = repel_weight.GetForce (particles [i].position);
+					}
+					particles [i].velocity += force * factor;
+				}
+				pe.particles = particles;
+			}
+			foreach (ParticleSystem ps in pss) {
+				Transform t = ps.transform;
+				ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.maxParticles];
+				int num = ps.GetParticles (particles);
+				for (int i = 0; i < num; i++) {
+					Vector3 force;
+					if (ps.simulationSpace == ParticleSystemSimulationSpace.Local) {
+						force = t.InverseTransformDirection (repel_weight.GetForce (t.TransformPoint (particles [i].position)));
+					} else {
+						force = repel_weight.GetForce (particles [i].position);
 					}
 					particles [i].velocity += force * factor;
 				}
