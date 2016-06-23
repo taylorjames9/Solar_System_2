@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -27,6 +28,9 @@ public class ForceField : MonoBehaviour
 
     [FFToolTip("This multiplier will scale the output of the whole field.")]
     public float generalMultiplier = 1;
+
+	public bool IsRepulse = false;
+		
 
     [FFToolTip("If true, the force will be applied on the mass center rather than transform center.")]
     public bool useMassCenter = false;
@@ -244,6 +248,7 @@ public class ForceField : MonoBehaviour
                     break;
             }
         }
+			
 
         /// <summary>
         /// Get the force of this field function based on the input rigidbody on the input position.
@@ -809,7 +814,7 @@ public class ForceField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		IsRepulse = GetComponentInChildren<Toggle> ().isOn;
     }
 
     void FixedUpdate()
@@ -1079,6 +1084,16 @@ public class ForceField : MonoBehaviour
                 force += ff.GetForce(position, target);
             }
         }
+		generalMultiplier = GetComponentInChildren<Slider>().value;
+		if (IsRepulse) {
+			if (generalMultiplier > 0) {
+				generalMultiplier *= -1;
+			}
+		} else {
+			if (generalMultiplier < 0) {
+				generalMultiplier *= -1;
+			}
+		}
         return force * generalMultiplier;
     }
 
