@@ -30,7 +30,7 @@ public class ForceField : MonoBehaviour
     public float generalMultiplier = 1;
 
 	public bool IsRepulse = false;
-		
+	public int OnOff = 1;
 
     [FFToolTip("If true, the force will be applied on the mass center rather than transform center.")]
     public bool useMassCenter = false;
@@ -819,6 +819,15 @@ public class ForceField : MonoBehaviour
 		}
     }
 
+	public void toggleOnOff()
+	{
+		if (OnOff == 1) {
+			OnOff = 0;
+		} else {
+			OnOff = 1;
+		}
+	}
+
     void FixedUpdate()
     {
         UpdateIgnoredDictionary();
@@ -1096,7 +1105,7 @@ public class ForceField : MonoBehaviour
 				generalMultiplier *= -1;
 			}
 		}
-        return force * generalMultiplier;
+		return force * generalMultiplier * OnOff;
     }
 
     /// <summary>
@@ -1485,7 +1494,7 @@ public class ForceField : MonoBehaviour
 
 	public void ModifyGravity(float pi){
 		generalMultiplier = pi;
-		Debug.Log ("ModifyGravity called. gravity changed to " + pi);
+		//Debug.Log ("ModifyGravity called. gravity changed to " + pi);
 	}
 
     void DrawRaycastArea()

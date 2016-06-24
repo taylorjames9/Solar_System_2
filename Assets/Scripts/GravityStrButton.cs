@@ -21,6 +21,6 @@ public class GravityStrButton : MonoBehaviour {
 	public void doSomething()
 	{
 		GetComponentInParent<GravityButtonScriptManager> ().changeGravUI(buttonID);
-		Debug.Log ("dosomething called, button ID: " + buttonID);
+		//Debug.Log ("dosomething called, button ID: " + buttonID);
 	}
 }

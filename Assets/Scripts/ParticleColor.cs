@@ -4,20 +4,19 @@ using System.Collections;
 
 public class ParticleColor : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		Gradient myColorToYellow = new Gradient();
-		//myColorToYellow.SetKeys (new GradientColorKey[]{new GradientColorKey(GetComponent<Image>.Color, 1.0f), new GradientColorKey(Color.yellow, 0.5f)}, new GradientAlphaKey[](0.0f, 1.0f)});
+	Gradient myColorToYellow = new Gradient();
+	ParticleSystem targetPS;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	// Use this for initialization
+	void OnEnable() {
+		targetPS = GetComponentInParent<ParticleSystem>();
+		myColorToYellow.SetKeys(new GradientColorKey[]{new GradientColorKey(GetComponent<Image>().color, 0.0f), new GradientColorKey(Color.yellow, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
 	}
 
 	public void changeParticleColor(){
-		Debug.Log (this + " pressed, changing PS to " + this.GetComponentInParent<Image> ().color);
-		//GetComponentInParent<ParticleSystem>().colorOverLifetime.color = 
+		//Debug.Log (this + " pressed, changing PS to " + this.GetComponentInParent<Image> ().color);
+		var tempVar = targetPS.colorOverLifetime;
+		tempVar.enabled = true;
+		tempVar.color = new ParticleSystem.MinMaxGradient(myColorToYellow);
 	}
 }

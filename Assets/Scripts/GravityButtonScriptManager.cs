@@ -27,6 +27,6 @@ public class GravityButtonScriptManager : MonoBehaviour {
 				gsArray [i].GetComponent<Image> ().color = Color.grey;
 			}
 		}
-		Debug.Log ("changeGravUI called, button pressed: " + buttonPressed);
+		//Debug.Log ("changeGravUI called, button pressed: " + buttonPressed);
 	}
 }
