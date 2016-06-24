@@ -814,7 +814,9 @@ public class ForceField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		IsRepulse = GetComponentInChildren<Toggle> ().isOn;
+		if(GetComponentInChildren<Toggle>() != null){
+			IsRepulse = GetComponentInChildren<Toggle> ().isOn;
+		}
     }
 
     void FixedUpdate()
@@ -1084,7 +1086,7 @@ public class ForceField : MonoBehaviour
                 force += ff.GetForce(position, target);
             }
         }
-		generalMultiplier = GetComponentInChildren<Slider>().value;
+		//generalMultiplier = GetComponentInChildren<GravityButtonScriptManager>().value;
 		if (IsRepulse) {
 			if (generalMultiplier > 0) {
 				generalMultiplier *= -1;
@@ -1480,6 +1482,11 @@ public class ForceField : MonoBehaviour
         }
         Gizmos.color = defaultColor;
     }
+
+	public void ModifyGravity(float pi){
+		generalMultiplier = pi;
+		Debug.Log ("ModifyGravity called. gravity changed to " + pi);
+	}
 
     void DrawRaycastArea()
     {

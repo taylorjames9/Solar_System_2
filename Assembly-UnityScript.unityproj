@@ -49,15 +49,15 @@
      <Compile Include="Assets\ForceFieldPro\Demo\Script\Camera Scripts\SmoothFollow.js" />
      <Compile Include="Assets\ForceFieldPro\Demo\Script\Camera Scripts\SmoothLookAt.js" />
      <Compile Include="Assets\ForceFieldPro\Demo\Script\General Scripts\DragRigidbody.js" />
-     <Compile Include="Assets\TouchScript\examples\general\Tap\Scripts\TapJS_Breaker.js" />
-     <Compile Include="Assets\TouchScript\examples\general\Tap\Scripts\TapJS_Spawner.js" />
-     <None Include="Assets\TouchScript\Shaders\DebugDepthTest.shader" />
+     <Compile Include="Assets\touchscript\examples\general\Tap\Scripts\TapJS_Breaker.js" />
+     <Compile Include="Assets\touchscript\examples\general\Tap\Scripts\TapJS_Spawner.js" />
+     <None Include="Assets\touchscript\Shaders\DebugDepthTest.shader" />
      <None Include="Assets\CurvedUI\Demo Scenes\Demo Scenes Content\OverlayBlend.shader" />
-     <None Include="Assets\TouchScript\Shaders\DebugMultiplyDepthTest.shader" />
-     <None Include="Assets\TouchScript\Shaders\DebugNoDepthTest.shader" />
+     <None Include="Assets\touchscript\Shaders\DebugMultiplyDepthTest.shader" />
+     <None Include="Assets\touchscript\Shaders\DebugNoDepthTest.shader" />
      <None Include="Assets\CurvedUI\Shaders and Materials\UIAlwaysOnTop.shader" />
-     <None Include="Assets\TouchScript\Shaders\DebugMultiplyNoDepthTest.shader" />
-     <None Include="Assets\TouchScript\examples\_misc\Shaders\UnlitColor.shader" />
+     <None Include="Assets\touchscript\Shaders\DebugMultiplyNoDepthTest.shader" />
+     <None Include="Assets\touchscript\examples\_misc\Shaders\UnlitColor.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -78,21 +78,6 @@
  </Reference>
  <Reference Include="TUIOsharp">
  <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/touchscript/Plugins/TUIOsharp.dll</HintPath>
- </Reference>
- <Reference Include="TouchScript">
- <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/TouchScript/Plugins/TouchScript.dll</HintPath>
- </Reference>
- <Reference Include="TUIOsharp">
- <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/TouchScript/Plugins/TUIOsharp.dll</HintPath>
- </Reference>
- <Reference Include="TouchScript.TUIO">
- <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/TouchScript/Plugins/TouchScript.TUIO.dll</HintPath>
- </Reference>
- <Reference Include="TouchScript.Windows">
- <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/TouchScript/Plugins/TouchScript.Windows.dll</HintPath>
- </Reference>
- <Reference Include="OSCsharp">
- <HintPath>C:/Users/PrizmLabs/Documents/GitHub/Solar_System_2/Assets/TouchScript/Plugins/OSCsharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
