@@ -53,8 +53,11 @@
      <Compile Include="Assets\touchscript\examples\general\Tap\Scripts\TapJS_Spawner.js" />
      <None Include="Assets\touchscript\Shaders\DebugDepthTest.shader" />
      <None Include="Assets\CurvedUI\Demo Scenes\Demo Scenes Content\OverlayBlend.shader" />
+     <None Include="Assets\HeyBlairGames\PlanetTextureGenerator\Editor\PlanetNoiseGenerator.compute" />
+     <None Include="Assets\HeyBlairGames\PlanetTextureGenerator\Runtime\PlanetSpecular.shader" />
      <None Include="Assets\touchscript\Shaders\DebugMultiplyDepthTest.shader" />
      <None Include="Assets\touchscript\Shaders\DebugNoDepthTest.shader" />
+     <None Include="Assets\HeyBlairGames\PlanetTextureGenerator\Runtime\PlanetParallaxSpecular.shader" />
      <None Include="Assets\CurvedUI\Shaders and Materials\UIAlwaysOnTop.shader" />
      <None Include="Assets\touchscript\Shaders\DebugMultiplyNoDepthTest.shader" />
      <None Include="Assets\touchscript\examples\_misc\Shaders\UnlitColor.shader" />
