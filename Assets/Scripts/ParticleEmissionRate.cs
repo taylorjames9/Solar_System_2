@@ -14,7 +14,11 @@ public class ParticleEmissionRate : MonoBehaviour {
 	public void setParticleEmissions()
 	{
 		var tempVar = targetPS.emission;
-		tempVar.enabled = true;
-		tempVar.rate = new ParticleSystem.MinMaxCurve(particlesEmitted);
+		if (particlesEmitted == 0) {
+			tempVar.enabled = false;
+		} else {
+			tempVar.enabled = true;
+			tempVar.rate = new ParticleSystem.MinMaxCurve(particlesEmitted);
+		}
 	}
 }
