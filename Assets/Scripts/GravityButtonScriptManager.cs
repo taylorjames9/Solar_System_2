@@ -20,11 +20,21 @@ public class GravityButtonScriptManager : MonoBehaviour {
 	public void changeGravUI(float buttonPressed)
 	{
 		GetComponentInParent<ForceField> ().ModifyGravity (buttonPressed);
-		for (int i = 0; i < gsArray.Length; i++) {
-			if (i < (int) buttonPressed) {
-				gsArray [i].GetComponent<Image> ().color = Color.cyan;
-			} else {
-				gsArray [i].GetComponent<Image> ().color = Color.grey;
+		if (!GetComponentInParent<ToggleUi> ().turnedOff) {
+			for (int i = 0; i < gsArray.Length; i++) {
+				if (i < (int)buttonPressed) {
+					gsArray [i].GetComponent<Image> ().color = Color.cyan;
+				} else {
+					gsArray [i].GetComponent<Image> ().color = Color.grey;
+				}
+			}
+		} else {
+			for (int i = 0; i < gsArray.Length; i++) {
+				if (i < (int) buttonPressed) {
+					gsArray [i].GetComponent<Image> ().CrossFadeAlpha(0f, 1f, true);
+				} /*else {
+					gsArray [i].GetComponent<Image> ().color = Color.grey;
+				}*/
 			}
 		}
 		//Debug.Log ("changeGravUI called, button pressed: " + buttonPressed);
