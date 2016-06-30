@@ -16,7 +16,7 @@ public class OscillatingSpiralSize : MonoBehaviour {
 	void Update () {
 		counter++;
 		if (counter % 100 == 0) {
-			spf.size = Mathf.PingPong (Time.time, GetComponent<ForceField>().generalMultiplier) -1 ;
+			spf.size = Mathf.PingPong (Time.time, GetComponent<ForceField>().generalMultiplier) -3 ;
 		}
 	
 	}

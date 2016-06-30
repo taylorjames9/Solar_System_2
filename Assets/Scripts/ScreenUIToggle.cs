@@ -20,11 +20,8 @@ public class ScreenUIToggle : MonoBehaviour {
 	
 	void OnDoubleTap(object sender, EventArgs e)
 	{
-		//UIenabled = !UIenabled;
-		//Debug.Log(this  + " has detected double tap");
 		foreach(GameObject g in GameObject.FindGameObjectsWithTag("Planet"))
 		{
-			//if(UIenabled)
 			g.GetComponent<ToggleUi>().togglePlanetUI();
 		}
 
