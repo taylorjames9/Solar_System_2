@@ -814,10 +814,12 @@ public class ForceField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(GetComponentInChildren<Toggle>() != null){
-			IsRepulse = GetComponentInChildren<Toggle> ().isOn;
-		}
     }
+
+	public void toggleRepulse()
+	{
+		IsRepulse = !IsRepulse;
+	}
 
 	public void toggleOnOff()
 	{
